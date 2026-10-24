@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex,nofollow">
 
 <!-- ============================================================
-     META PIXEL: inserir ID  (Paulo plugar o ID real em {{PIXEL_ID}})
+     META PIXEL Digital Master (C3 - SALATIEL) · ID 26504188302609300
      Dispara PageView + InitiateCheckout no load (chegou na aplicação).
      Botão de pagamento preparado pra Purchase (ver JS no fim).
      ============================================================ -->
@@ -17,7 +17,7 @@ n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '{{PIXEL_ID}}'); /* <-- Paulo: trocar {{PIXEL_ID}} pelo ID real do Pixel */
+fbq('init', '26504188302609300'); /* Pixel Digital Master (C3 - SALATIEL) */
 fbq('track', 'PageView');
 fbq('track', 'InitiateCheckout', {content_name:'raiox_agenda_887', value:887.00, currency:'BRL'});
 </script>
@@ -101,13 +101,13 @@ fbq('track', 'InitiateCheckout', {content_name:'raiox_agenda_887', value:887.00,
             <!-- ============================================================
                  BOTÃO DE PAGAMENTO = CHECKOUT ASAAS (link de cobrança).
                  Paulo: gerar o link de cobrança no Asaas e trocar
-                 href="{{LINK_ASAAS_887}}" pelo link real ANTES do go-live.
+                 href="https://www.asaas.com/000/c/wsjh6tk32fjihxli" pelo link real ANTES do go-live.
                  NÃO gerar cobrança real agora. Enquanto for placeholder,
                  o clique não navega e mostra "Checkout em preparação".
                  O evento Purchase está preparado no JS (dispara só no
                  retorno do Asaas com pagamento confirmado (ver nota).
                  ============================================================ -->
-            <a class="btn btn-checkout" id="btn-asaas" href="{{LINK_ASAAS_887}}" data-checkout="pendente" rel="nofollow noopener">Garantir meu Raio-X com cashback <span class="arrow">→</span></a>
+            <a class="btn btn-checkout" id="btn-asaas" href="https://www.asaas.com/000/c/wsjh6tk32fjihxli" data-checkout="pendente" rel="nofollow noopener">Garantir meu Raio-X com cashback <span class="arrow">→</span></a>
             <span class="checkout-soon">Checkout seguro via Asaas</span>
           </div>
         </div>
@@ -128,7 +128,7 @@ fbq('track', 'InitiateCheckout', {content_name:'raiox_agenda_887', value:887.00,
           <h2>Garanta seu Raio-X da Agenda por R$887.</h2>
           <p class="lead">Avançou pra implantação? Os R$887 voltam 100%. Não avançou? Você fica com a consultoria e o plano.</p>
           <div class="actions">
-            <a class="btn btn-checkout" id="btn-asaas-2" href="{{LINK_ASAAS_887}}" data-checkout="pendente" rel="nofollow noopener">Garantir meu Raio-X com cashback <span class="arrow">→</span></a>
+            <a class="btn btn-checkout" id="btn-asaas-2" href="https://www.asaas.com/000/c/wsjh6tk32fjihxli" data-checkout="pendente" rel="nofollow noopener">Garantir meu Raio-X com cashback <span class="arrow">→</span></a>
           </div>
           <span class="checkout-soon">Checkout seguro via Asaas</span>
         </div>

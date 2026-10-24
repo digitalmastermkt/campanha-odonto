@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raio-X garantido · MAIA Odontologia</title>
+<meta name="description" content="Pagamento do Raio-X da Agenda confirmado. Em breve a equipe entra em contato pra agendar sua sessão.">
+<meta name="robots" content="noindex,nofollow">
+
+<!-- ============================================================
+     META PIXEL Digital Master (C3 - SALATIEL) · ID 26504188302609300
+     Página de retorno do checkout Asaas. Dispara Purchase UMA vez,
+     com dedup por order_id (eventID). Sem order_id na URL, NÃO dispara
+     Purchase (padrão da casa: clique/visita != compra).
+     ============================================================ -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '26504188302609300'); /* Pixel Digital Master (C3 - SALATIEL) */
+fbq('track', 'PageView');
+(function(){
+  // Asaas devolve o id da cobrança/pagamento na query (ex.: ?p=pay_xxx ou ?payment=...).
+  // Só dispara Purchase se houver um identificador -> evita contar visita como compra.
+  var q = new URLSearchParams(window.location.search);
+  var orderId = q.get('p') || q.get('payment') || q.get('id') || q.get('order_id') || '';
+  if(orderId){
+    fbq('track','Purchase',{value:887.00, currency:'BRL', content_name:'raiox_agenda_887', order_id:orderId}, {eventID:orderId});
+  }
+})();
+</script>
+<!-- fim Meta Pixel -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/base.css">
+</head>
+<body class="theme-dark">
+<div class="wrap">
+
+  <div class="rail left"><span>MAIA · Odontologia · MMXXVI</span></div>
+  <div class="rail right"><span>Raio-X garantido · Agenda Cheia</span></div>
+
+  <header class="topbar">
+    <div class="container">
+      <span class="brand"><span class="o">Ø</span> MAIA</span>
+      <span class="topbar-title">A IA que cuida da agenda da sua clínica no WhatsApp</span>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section id="topo">
+      <div class="container">
+        <div class="reveal" style="max-width:860px;margin:0 auto;text-align:center;">
+          <p class="eyebrow" style="justify-content:center;">Pagamento confirmado</p>
+          <h1 class="display" style="margin:14px 0 20px;">Pronto. Seu Raio-X da Agenda está garantido<span class="dot">.</span></h1>
+          <p class="lead muted" style="margin:0 auto;">Recebemos seu pagamento. Nossa equipe vai entrar em contato pelo seu WhatsApp pra agendar a sua sessão 1:1, onde a gente calcula, com os seus números, quanto a sua clínica perde com paciente que falta e monta o plano da MAIA sob medida.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="lembrete" class="tight">
+      <div class="container">
+        <div class="reveal" style="max-width:820px;margin:0 auto;text-align:center;">
+          <p class="lead">Lembre-se: se você avançar pra implantação da MAIA, os <strong class="hl-money">R$887</strong> voltam 100% como cashback. Se não avançar, você fica com a consultoria e o plano na mão.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footmeta">
+        <span class="live"><span class="pulse"></span> A IA que cuida da agenda da sua clínica no WhatsApp</span>
+        <span>Raio-X da Agenda · Odontologia · MMXXVI</span>
+        <span>Edited in pt-BR · Filed under Agenda Cheia · FIN.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

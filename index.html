@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex,nofollow">
 
 <!-- ============================================================
-     META PIXEL: inserir ID  (Paulo plugar o ID real em {{PIXEL_ID}})
+     META PIXEL Digital Master (C3 - SALATIEL) · ID 26504188302609300
      Dispara PageView automático. Evento Lead no submit do form.
      ============================================================ -->
 <script>
@@ -16,7 +16,7 @@ n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '{{PIXEL_ID}}'); /* <-- Paulo: trocar {{PIXEL_ID}} pelo ID real do Pixel */
+fbq('init', '26504188302609300'); /* Pixel Digital Master (C3 - SALATIEL) */
 fbq('track', 'PageView');
 </script>
 <!-- fim Meta Pixel -->
@@ -232,14 +232,14 @@ fbq('track', 'PageView');
   }
 
   // ====================================================================
-  // DESTINO DO LEAD (placeholder):
-  // Paulo: trocar '{{LEAD_ENDPOINT}}' pelo webhook/endpoint real
-  // (n8n / Make / GoHighLevel). O payload já inclui nome, whatsapp,
-  // email, cadeiras e todos os utm_*. Testar ponta a ponta antes do
-  // go-live. Enquanto o endpoint não existir, o form redireciona pro
-  // obrigado mesmo assim (não trava o lead).
+  // DESTINO DO LEAD: /intake (same-origin). O Caddy repassa pro ERP
+  // (POST /api/v1/publico/cadastros/landing) com o X-Webhook-Token do
+  // tenant guardado no servidor — o token NUNCA aparece aqui no front.
+  // O lead vira parceiro + oportunidade na 1ª etapa do pipeline ("Novo"),
+  // com origem=evento_odonto e os utm_* preservados. Se a rede falhar,
+  // o form ainda redireciona pro obrigado (não trava a navegação).
   // ====================================================================
-  var LEAD_ENDPOINT = '{{LEAD_ENDPOINT}}';
+  var LEAD_ENDPOINT = '/intake';
   var REDIRECT = '/obrigado.html';
 
   function bindLeadForm(form){
@@ -254,7 +254,22 @@ fbq('track', 'PageView');
       if(!nome || !email || !whatsapp || !cadeiras){if(err) err.textContent='Preencha nome, WhatsApp, e-mail e o número de cadeiras.';return;}
       if(btn){btn.classList.add('is-loading'); btn.textContent='Garantindo sua vaga...';}
 
-      var payload = Object.assign({nome:nome,email:email,whatsapp:whatsapp,cadeiras:cadeiras}, utms());
+      var u = utms();
+      // payload no formato do intake do ERP (/intake -> ERP cadastros/landing).
+      // nome/email/telefone + utm objeto + consentimento (LGPD) + mensagem (cadeiras).
+      var payload = {
+        nome: nome,
+        email: email,
+        telefone: whatsapp,
+        origem: 'evento_odonto',
+        pagina: 'evento.agencianobolso.com.br/inscricao',
+        mensagem: 'Cadeiras: ' + cadeiras,
+        consentimento: { finalidade: 'contato comercial - evento odonto MAIA' },
+        utm: {
+          utm_source: u.utm_source, utm_medium: u.utm_medium, utm_campaign: u.utm_campaign,
+          utm_content: u.utm_content, utm_term: u.utm_term, referrer: u.referrer, cadeiras: cadeiras
+        }
+      };
 
       // dispara o evento Lead no Meta Pixel
       if(window.fbq){fbq('track','Lead',{content_name:'evento_odonto',cadeiras:cadeiras});}
