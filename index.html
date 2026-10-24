@@ -309,13 +309,13 @@ fbq('track', 'PageView');
             <span class="arr">→</span>
           </div>
           <div class="card" style="background:transparent;">
-            <div class="crow"><span class="cnum" style="color:var(--ink-faint);">L2</span><span class="ctag" style="color:var(--ink-mute);">A confirmar</span></div>
+            <div class="crow"><span class="cnum" style="color:var(--ink-faint);">L2</span><span class="ctag" style="color:var(--ink-mute);">Próximo lote</span></div>
             <h4>Lote 2 · R$37</h4>
             <p>Abre quando o Lote 1 esgotar. Mesma vaga, mesmo evento, R$10 mais caro.</p>
             <span class="arr">→</span>
           </div>
           <div class="card" style="background:transparent;">
-            <div class="crow"><span class="cnum" style="color:var(--ink-faint);">L3</span><span class="ctag" style="color:var(--ink-mute);">A confirmar</span></div>
+            <div class="crow"><span class="cnum" style="color:var(--ink-faint);">L3</span><span class="ctag" style="color:var(--ink-mute);">Último lote</span></div>
             <h4>Lote 3 · R$47</h4>
             <p>O último lote, mais caro, pra quem deixou pra última hora. Se sobrar vaga.</p>
             <span class="arr">→</span>
@@ -430,10 +430,14 @@ fbq('track', 'PageView');
   //   FREE_MODE = false  -> evento PAGO (padrão): lead -> /intake -> CHECKOUT_URL
   //
   // Pra virar grátis: trocar FREE_MODE pra true. Só isso.
-  // Pra trocar o preço/lote: trocar CHECKOUT_URL pelo link Asaas do lote ativo.
+  // Pra trocar o preço/lote: apontar CHECKOUT_URL pro link do lote ativo (uma linha).
+  // Os 3 lotes já têm link Asaas DETACHED criado (conta Digital Master):
+  var CHECKOUT_URL_L1 = 'https://www.asaas.com/000/c/uu0azqxyztoz6edu'; // Lote 1 · R$27,00
+  var CHECKOUT_URL_L2 = 'https://www.asaas.com/000/c/5j6lvlzxl5sppbyo'; // Lote 2 · R$37,00
+  var CHECKOUT_URL_L3 = 'https://www.asaas.com/000/c/yl76o9gtkafj46mr'; // Lote 3 · R$47,00
   // ====================================================================
   var FREE_MODE    = false;
-  var CHECKOUT_URL = 'https://www.asaas.com/000/c/uu0azqxyztoz6edu'; // Asaas · Ingresso Evento MAIA Odonto · Lote 1 · R$27,00
+  var CHECKOUT_URL = CHECKOUT_URL_L1; // LOTE ATIVO: quando L1 esgotar, trocar pra CHECKOUT_URL_L2 (e depois _L3)
   var REDIRECT_FREE = '/obrigado.html';
 
   // ====================================================================
