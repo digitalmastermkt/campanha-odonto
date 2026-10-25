@@ -27,6 +27,48 @@ fbq('track', 'PageView');
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/base.css">
+
+<!-- ============================================================
+     VISUAL ODONTO — enriquecimento visual (vídeo hero + bandas de imagem)
+     Usa os tokens da marca do base.css (--paper, --coral, --ink...).
+     ============================================================ -->
+<style>
+  /* VÍDEO HERO */
+  .video-hero{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:0 50px 90px -40px rgba(21,20,15,.4);background:#0d0c09;margin:30px auto 0;max-width:960px;}
+  .video-hero video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#0d0c09;}
+  .video-hero .vh-badge{position:absolute;top:16px;left:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:#fff;background:rgba(21,20,15,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;padding:8px 14px;pointer-events:none;}
+  .video-hero .vh-badge .pdot{width:7px;height:7px;border-radius:50%;background:var(--coral);animation:pulse 2.4s ease-in-out infinite;}
+  .video-cap{text-align:center;font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;color:var(--ink-mute);margin-top:14px;}
+
+  /* BANDA DE IMAGEM (seções) */
+  .img-band{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:0 36px 70px -36px rgba(21,20,15,.28);}
+  .img-band img{display:block;width:100%;height:100%;object-fit:cover;}
+  .img-band.band-wide{aspect-ratio:16/8;}
+  .img-band .band-tag{position:absolute;left:18px;bottom:18px;font-family:var(--font-display);font-weight:600;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:rgba(21,20,15,.5);
+    backdrop-filter:blur(5px);border-radius:999px;padding:7px 14px;}
+
+  /* SPLIT COPY + IMAGEM (problema / prova) */
+  .vsplit{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;}
+  .vsplit .vs-img{border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 36px 70px -36px rgba(21,20,15,.28);}
+  .vsplit .vs-img img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;}
+  @media(max-width:880px){.vsplit{grid-template-columns:1fr;gap:30px;}}
+
+  /* MOCKUP WHATSAPP (seção MAIA) */
+  .phone-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;margin-bottom:46px;}
+  .phone-wrap .ph-img{border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 44px 80px -36px rgba(21,20,15,.34);max-width:360px;justify-self:center;}
+  .phone-wrap .ph-img img{display:block;width:100%;height:auto;}
+  @media(max-width:880px){.phone-wrap{grid-template-columns:1fr;gap:30px;}.phone-wrap .ph-copy{order:-1;}}
+
+  /* ÍCONE dentro do card das capacidades */
+  .card .cicon{position:absolute;top:24px;right:24px;width:34px;height:34px;color:var(--coral);opacity:.9;}
+  .card h4{padding-right:12px;}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -65,6 +107,15 @@ fbq('track', 'PageView');
             <span class="badge">Online · Google Meet</span>
             <span class="badge">Vagas por lote</span>
           </div>
+
+          <!-- ======== VÍDEO HERO — a MAIA em ação ======== -->
+          <div class="video-hero reveal">
+            <span class="vh-badge"><span class="pdot"></span> MAIA em ação</span>
+            <video id="hero-video" autoplay muted loop playsinline preload="metadata" controls poster="/assets/poster.jpg">
+              <source src="/assets/hero.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="video-cap reveal">Veja a MAIA atendendo, confirmando e organizando a agenda — assista com som.</p>
 
           <!-- ======== FORMULÁRIO DE INSCRIÇÃO + CHECKOUT ======== -->
           <div class="form-card reveal" id="form-wrap">
@@ -129,6 +180,11 @@ fbq('track', 'PageView');
             <p class="kick">Tudo isso é repetitivo, previsível e cansa a sua equipe. Que é exatamente o tipo de trabalho que uma inteligência artificial faz melhor, 24 horas por dia, sem reclamar e sem esquecer.</p>
           </div>
         </div>
+
+        <div class="img-band band-wide reveal" style="max-width:1000px;margin:48px auto 0;">
+          <img src="/assets/img-clinica.jpg" alt="Recepção de clínica odontológica moderna" loading="lazy" width="1600" height="800">
+          <span class="band-tag">A sua operação merece rodar redonda</span>
+        </div>
       </div>
     </section>
 
@@ -149,57 +205,68 @@ fbq('track', 'PageView');
           <p class="lead muted">Ela conversa como gente, entende o que o paciente quer, resolve sozinha o que é rotina e só chama um humano quando precisa de um humano de verdade. Ela não substitui o cuidado da sua equipe: ela tira da equipe o trabalho repetitivo pra sobrar gente pro que importa, que é cuidar de quem está na cadeira.</p>
         </div>
 
+        <div class="phone-wrap reveal">
+          <div class="ph-img">
+            <img src="/assets/img-whatsapp.jpg" alt="Conversa da MAIA no WhatsApp confirmando consulta" loading="lazy" width="900" height="1200">
+          </div>
+          <div class="ph-copy">
+            <p class="eyebrow">É assim que o paciente é atendido</p>
+            <h3 class="sub" style="margin:14px 0 14px;">Conversa de verdade, na hora, no WhatsApp que a clínica já usa<span class="dot">.</span></h3>
+            <p class="lead muted" style="margin:0;">O paciente manda mensagem e a MAIA responde na hora, confirma o horário, remarca o que precisa e cobra com educação — do jeito que a sua clínica fala. Sem fila de espera, sem mensagem esquecida.</p>
+          </div>
+        </div>
+
         <div class="grid-3">
           <div class="card reveal">
-            <div class="crow"><span class="cnum">01</span><span class="ctag">Atende</span></div>
+            <div class="crow"><span class="cnum">01</span><span class="ctag">Atende</span></div><svg class="cicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg>
             <h4>Responde na hora, 24h</h4>
             <p>Paciente mandou mensagem às 22h num domingo? A MAIA responde na hora, tira dúvida de valor, de convênio e de horário, e não deixa ninguém esperando.</p>
             <span class="arr">→</span>
           </div>
           <div class="card reveal">
-            <div class="crow"><span class="cnum">02</span><span class="ctag">Vende</span></div>
+            <div class="crow"><span class="cnum">02</span><span class="ctag">Vende</span></div><svg class="cicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h2l.4 2M7 13h10l3-8H6.4M7 13 5.4 5M7 13l-2 4h12"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
             <h4>Transforma conversa em consulta</h4>
             <p>Ela puxa o lead pra dentro: qualifica, apresenta o tratamento, quebra objeção e conduz o paciente até marcar. Quem chega no WhatsApp vira agenda.</p>
             <span class="arr">→</span>
           </div>
           <div class="card reveal">
-            <div class="crow"><span class="cnum">03</span><span class="ctag">Confirma</span></div>
+            <div class="crow"><span class="cnum">03</span><span class="ctag">Confirma</span></div><svg class="cicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
             <h4>Confirmação automática</h4>
             <p>Confirma cada consulta no tom da clínica, no horário certo, sem a secretária mandar uma por uma. Quem vai faltar avisa antes, não no dia.</p>
             <span class="arr">→</span>
           </div>
           <div class="card reveal">
-            <div class="crow"><span class="cnum">04</span><span class="ctag">Remarca</span></div>
+            <div class="crow"><span class="cnum">04</span><span class="ctag">Remarca</span></div><svg class="cicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/></svg>
             <h4>Preenche o buraco na hora</h4>
             <p>Cancelou? Ela já oferece outro horário e chama alguém da lista de espera pra tapar o buraco no mesmo dia. A cadeira não fica vazia.</p>
             <span class="arr">→</span>
           </div>
           <div class="card reveal">
-            <div class="crow"><span class="cnum">05</span><span class="ctag">Cobra</span></div>
+            <div class="crow"><span class="cnum">05</span><span class="ctag">Cobra</span></div><svg class="cicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
             <h4>Cobrança e lembrete</h4>
             <p>Lembra o paciente da consulta, cobra parcela em aberto com educação e dispara o aviso na hora certa pra derrubar a taxa de falta.</p>
             <span class="arr">→</span>
           </div>
           <div class="card reveal">
-            <div class="crow"><span class="cnum">06</span><span class="ctag">Reativa</span></div>
+            <div class="crow"><span class="cnum">06</span><span class="ctag">Reativa</span></div><svg class="cicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 2v6h-6M3 12a9 9 0 0 1 14.7-7L21 8"/><path d="M7 22v-6h6"/><path d="M21 12a9 9 0 0 1-14.7 7L3 16"/></svg>
             <h4>Traz de volta quem sumiu</h4>
             <p>Puxa a base de pacientes antigos e chama de volta quem não aparece há meses pra manutenção, limpeza ou retorno. Faturamento parado que volta pra agenda.</p>
             <span class="arr">→</span>
           </div>
           <div class="card reveal">
-            <div class="crow"><span class="cnum">07</span><span class="ctag">Organiza</span></div>
+            <div class="crow"><span class="cnum">07</span><span class="ctag">Organiza</span></div><svg class="cicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-6"/></svg>
             <h4>Relatório da operação</h4>
             <p>No fim do dia você sabe quem confirmou, quem remarcou, quanto da agenda foi recuperado e o que entrou de novo paciente. Gestão sem planilha.</p>
             <span class="arr">→</span>
           </div>
           <div class="card reveal">
-            <div class="crow"><span class="cnum">08</span><span class="ctag">Sob medida</span></div>
+            <div class="crow"><span class="cnum">08</span><span class="ctag">Sob medida</span></div><svg class="cicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
             <h4>Sistema feito pra sua clínica</h4>
             <p>Além do atendimento, a MAIA vem com sistemas sob medida pra sua operação: do jeito que a sua clínica trabalha, não um modelo engessado de prateleira.</p>
             <span class="arr">→</span>
           </div>
           <div class="card reveal">
-            <div class="crow"><span class="cnum">09</span><span class="ctag">Libera</span></div>
+            <div class="crow"><span class="cnum">09</span><span class="ctag">Libera</span></div><svg class="cicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
             <h4>Sua equipe de volta ao paciente</h4>
             <p>A secretária sai do celular e volta a cuidar de quem está na recepção. A MAIA faz a parte repetitiva; o seu time faz a parte humana.</p>
             <span class="arr">→</span>
@@ -236,6 +303,17 @@ fbq('track', 'PageView');
          ============================================================ -->
     <section id="prova" class="tight">
       <div class="container">
+        <div class="vsplit reveal" style="max-width:1020px;margin:0 auto 40px;">
+          <div class="vs-img">
+            <img src="/assets/img-atendimento.jpg" alt="Recepcionista de clínica com a MAIA no WhatsApp" loading="lazy" width="1200" height="900">
+          </div>
+          <div>
+            <p class="eyebrow">Equipe livre, paciente bem atendido</p>
+            <h3 class="sub" style="margin:14px 0 14px;">Sua secretária volta a cuidar de quem está na frente dela<span class="dot">.</span></h3>
+            <p class="lead muted" style="margin:0;">A MAIA assume o repetitivo e a sua equipe faz o que é humano: receber bem, cuidar do paciente na cadeira e resolver o que exige sensibilidade. Mais atendimento, sem contratar mais gente.</p>
+          </div>
+        </div>
+
         <div class="guarantee reveal" style="max-width:860px;">
           <div class="gh">A MAIA já atende e vende no WhatsApp de negócios em várias áreas<span class="dot">.</span></div>
           <p>Hoje a MAIA já responde paciente, qualifica lead, confirma agenda, cobra e organiza a operação de clientes em diferentes mercados, dentro do WhatsApp, no automático. Estudos de mercado apontam que clínicas que operam com agenda e financeiro desorganizados perdem de 20% a 30% de receita só pra ineficiência, e que cerca de 1 em cada 3 clínicas convive com taxa de falta acima de 11%. <em class="muted" style="font-size:14px;">(Referência de mercado — SuperDental / OdontoResults, 2026.)</em></p>
